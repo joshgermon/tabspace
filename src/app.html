@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="text-scale" content="scale" />
+		<script>
+			try {
+				const theme = localStorage.getItem('tabspace:theme');
+				if (theme === 'light') {
+					document.documentElement.classList.remove('dark');
+				} else if (theme === 'dark') {
+					document.documentElement.classList.add('dark');
+				} else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+					document.documentElement.classList.remove('dark');
+				} else {
+					document.documentElement.classList.add('dark');
+				}
+			} catch (_) {}
+		</script>
+		%sveltekit.head%
+	</head>
+	<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased transition-colors duration-150" data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
